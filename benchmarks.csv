@@ -1,0 +1,18 @@
+implementation,operation,dataset,records,bytes_input,bytes_output,iterations,total_ms,ops_per_sec,mb_per_sec,peak_memory_bytes,notes
+rust,sx_text_parse_small,text,1,125,0,2000,17.031,117433.061,13.999,3739,measured with counting allocator
+rust,sx_text_parse_medium,text,1,222,0,1500,19.356,77497.256,16.407,7622,measured with counting allocator
+rust,sx_binary_encode_small,value,1,135,264,4000,78.692,50831.035,6.544,763,measured with counting allocator
+rust,sx_binary_decode_small,value,1,264,264,4000,68.684,58237.921,14.663,2162,measured with counting allocator
+rust,sx_binary_encode_event_batch_1k,value,1,123586,37776,200,1184.935,168.786,19.893,476855,measured with counting allocator
+rust,sx_binary_decode_event_batch_1k,value,1,37776,37776,200,647.778,308.748,11.123,2316500,measured with counting allocator
+rust,sx_binary_decode_event_batch_1k_full_materialization,value,1,37776,37776,200,619.776,322.697,11.625,2316500,measured with counting allocator
+rust,sx_binary_decode_hot_fields_1k,event_batch_1k,1000,37776,4000,300,201.574,1488.284,53.617,164098,hot field fast path; full_decode_calls=0; rows_materialized=0
+rust,sx_binary_decode_hot_fields_1k_full_materialization,event_batch_1k,1000,37776,123586,300,1008.437,297.490,10.717,2316500,full decode baseline; full_decode_calls=300; rows_materialized=300000
+rust,sx_binary_table_scan_10k,event_batch_10k,10000,165207,40216,80,236.160,338.754,53.372,1336,encoded column scan; full_decode_calls=0; rows_materialized=0
+rust,sx_binary_table_scan_10k_full_materialization,event_batch_10k,10000,440053,221265,80,272.111,293.998,123.381,3942804,materialized table baseline
+rust,sx_logical_hash_small,small,1,135,32,3000,25.573,117313.286,15.104,169,measured with counting allocator
+rust,sx_delta_apply_small,small,1,135,135,2000,7.635,261952.191,33.725,2127,measured with counting allocator
+serde_json,json_parse_small_baseline,json,1,166,166,3000,13.566,221133.296,35.008,2013,measured with counting allocator
+serde_json,json_parse_event_batch_1k_baseline,json,1,97585,97585,200,649.518,307.920,28.656,716852,measured with counting allocator
+serde_json,json_size_event_batch_1k_baseline,event_batch_1k,1000,97585,97585,50000,0.229,218191021.876,20305796.499,0,size baseline
+rust,sx_size_event_batch_1k,event_batch_1k,1000,123586,37776,200,1244.774,160.672,18.937,476855,size from encoded binary

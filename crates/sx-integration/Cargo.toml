@@ -1,0 +1,16 @@
+[package]
+name = "sx-integration"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+sx-core = { path = "../sx-core" }
+sx-text = { path = "../sx-text" }
+sx-binary = { path = "../sx-binary" }
+sx-schema = { path = "../sx-schema" }
+sx-runtime = { path = "../sx-runtime" }
+sx-delta = { path = "../sx-delta" }
+sx-crypto = { path = "../sx-crypto" }
+sx-stream = { path = "../sx-stream" }
+uuid.workspace = true

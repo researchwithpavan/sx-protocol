@@ -1,0 +1,12 @@
+{
+  tenant: "acme",
+  type: "event",
+  timestamp: timestamp("2026-04-29T12:00:00Z"),
+  payload: {
+    details: {
+      metadata: { source: "sensor", region: "in-west" },
+      blob_ref: { uri: "sxblob://sha256/abc", media_type: "application/octet-stream", size: 1024 }
+    },
+    values: [1,2,3,4,5]
+  }
+}

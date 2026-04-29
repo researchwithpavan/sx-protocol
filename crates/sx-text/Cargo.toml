@@ -1,0 +1,13 @@
+[package]
+name = "sx-text"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+sx-core = { path = "../sx-core" }
+thiserror.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+base64.workspace = true
+hex.workspace = true

@@ -1,0 +1,5 @@
+delta from hash("state-001") {
+  set /users/42/status = "typing",
+  increment /rooms/7/unread_count by 1,
+  append /rooms/7/messages { id: "m-1", text: "Hello" }
+}

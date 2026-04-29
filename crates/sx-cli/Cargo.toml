@@ -1,0 +1,23 @@
+[package]
+name = "sx-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "sx"
+path = "src/main.rs"
+
+[dependencies]
+clap.workspace = true
+serde_json.workspace = true
+rand.workspace = true
+hex.workspace = true
+sx-core = { path = "../sx-core" }
+sx-text = { path = "../sx-text" }
+sx-binary = { path = "../sx-binary" }
+sx-schema = { path = "../sx-schema" }
+sx-runtime = { path = "../sx-runtime" }
+sx-delta = { path = "../sx-delta" }
+sx-crypto = { path = "../sx-crypto" }
+sx-stream = { path = "../sx-stream" }

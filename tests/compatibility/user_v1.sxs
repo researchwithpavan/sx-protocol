@@ -1,0 +1,5 @@
+schema User v1 {
+  #1 id: uuid
+  #2 name: string
+  #3 active?: bool = true
+}

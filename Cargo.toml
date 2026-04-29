@@ -1,0 +1,35 @@
+[workspace]
+members = [
+  "crates/sx-core",
+  "crates/sx-text",
+  "crates/sx-binary",
+  "crates/sx-schema",
+  "crates/sx-runtime",
+  "crates/sx-delta",
+  "crates/sx-crypto",
+  "crates/sx-stream",
+  "crates/sx-ffi",
+  "crates/sx-cli",
+  "crates/sx-integration",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://example.invalid/sx"
+authors = ["SX Contributors"]
+
+[workspace.dependencies]
+thiserror = "1.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+hex = "0.4"
+base64 = "0.22"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+uuid = { version = "1", features = ["serde", "v4"] }
+clap = { version = "4.5", features = ["derive"] }
+libc = "0.2"
+rand = "0.8"

@@ -1,0 +1,6 @@
+table SensorReading {
+  device_id: ["sensor-1", "sensor-1", "sensor-1", "sensor-2"],
+  offset_ms: u8[0, 1, 2, 3],
+  temperature: f32[22.4, 22.5, 22.7, 23.1],
+  humidity: f32[0.61, 0.62, 0.60, 0.64]
+}

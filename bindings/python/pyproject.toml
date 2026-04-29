@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sx-protocol"
+version = "0.1.0"
+description = "Python bindings for SX Protocol via C ABI"
+requires-python = ">=3.9"
+
+dependencies = []

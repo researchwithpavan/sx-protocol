@@ -1,0 +1,7 @@
+{
+  id: uuid("018f4b5e-7a24-7c8a-b28d-3f951a1b7f13"),
+  name: "Asha",
+  active: true,
+  score: i32[1, 2, 3],
+  created_at: timestamp("2026-04-29T12:00:00Z")
+}

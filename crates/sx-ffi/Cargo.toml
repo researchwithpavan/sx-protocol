@@ -1,0 +1,17 @@
+[package]
+name = "sx-ffi"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["cdylib", "staticlib", "rlib"]
+
+[dependencies]
+libc.workspace = true
+sx-core = { path = "../sx-core" }
+sx-text = { path = "../sx-text" }
+sx-binary = { path = "../sx-binary" }
+sx-crypto = { path = "../sx-crypto" }
+sx-delta = { path = "../sx-delta" }
+

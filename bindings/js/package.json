@@ -1,0 +1,14 @@
+{
+  "name": "sx-protocol-js",
+  "version": "0.1.0",
+  "description": "Node.js bindings for SX Protocol via C ABI",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node tests/smoke.test.js"
+  },
+  "dependencies": {
+    "ffi-napi": "^4.0.3",
+    "ref-napi": "^3.0.3",
+    "ref-struct-di": "^1.1.1"
+  }
+}

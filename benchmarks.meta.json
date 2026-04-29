@@ -1,0 +1,11 @@
+{
+  "arch": "x86_64",
+  "benchmark_csv": "benchmarks.csv",
+  "cpu_model": "13th Gen Intel(R) Core(TM) i5-13450HX",
+  "family": "unix",
+  "generated_at_utc": "1777478024",
+  "notes": "Benchmark results are sensitive to CPU frequency scaling, thermal state, and background load. Run on an isolated machine with fixed governor for reproducibility.",
+  "os": "linux",
+  "rustc_verbose": "rustc 1.95.0 (59807616e 2026-04-14)\nbinary: rustc\ncommit-hash: 59807616e1fa2540724bfbac14d7976d7e4a3860\ncommit-date: 2026-04-14\nhost: x86_64-unknown-linux-gnu\nrelease: 1.95.0\nLLVM version: 22.1.2\n",
+  "rustc_version": "rustc 1.95.0 (59807616e 2026-04-14)"
+}
