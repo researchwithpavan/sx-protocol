@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SX Protocol | Data Without the Tax</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .hero-gradient { background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, rgba(15, 23, 42, 0) 70%); }
+        .text-gradient { background: linear-gradient(to right, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .comparison-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+        @media (max-width: 768px) { .comparison-grid { grid-template-columns: 1fr 1fr; } }
+        .code-container::-webkit-scrollbar { height: 4px; }
+        .code-container::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-[#020617] text-slate-300 font-sans selection:bg-blue-500/30">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 border-b border-white/5 glass">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/20">
+                    <span class="text-white font-bold italic">SX</span>
+                </div>
+                <span class="text-xl font-bold text-white tracking-tight">SX Protocol</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+                <a href="#why" class="hover:text-blue-400 transition-colors">Why SX?</a>
+                <a href="#code" class="hover:text-blue-400 transition-colors">Code Comparison</a>
+                <a href="#comparison" class="hover:text-blue-400 transition-colors">Full Benchmarks</a>
+                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+            </div>
+            <a href="https://github.com/researchwithpavan/sx-protocol" target="_blank" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-sm font-bold transition-all flex items-center gap-2">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-44 pb-32 overflow-hidden hero-gradient">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-[1.1]">
+                Connect Your Systems <br> <span class="text-gradient">Without the "Parsing Tax"</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
+                Modern systems waste significant resources just "translating" data. 
+                SX Protocol enables high-performance state exchange with zero-copy binary layouts that machines can use directly. 
+                Optimized for AI Agents, Edge Computing, and Real-time Financial Services.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#code" class="px-8 py-4 bg-white text-slate-950 rounded-2xl font-bold hover:bg-slate-200 transition-all">Compare Code</a>
+                <a href="#comparison" class="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-2xl font-bold hover:bg-white/10 transition-all">Detailed Benchmarks</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem Section -->
+    <section id="why" class="py-24 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-6 tracking-tight text-center md:text-left">The Problem with Traditional Data</h2>
+                    <p class="text-slate-400 mb-8 leading-relaxed text-center md:text-left">
+                        JSON is human-readable but computationally expensive. Every time a message is received, the CPU must scan characters, validate UTF-8, and allocate memory just to access a single field. This "parsing tax" accounts for up to 30% of latency in high-speed microservices.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/5">
+                            <i class="fas fa-microchip text-blue-400 mt-1"></i>
+                            <div>
+                                <span class="block text-white font-bold">CPU Inefficiency</span>
+                                <span class="text-sm text-slate-500">Most time is spent parsing text rather than running business logic.</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/5">
+                            <i class="fas fa-memory text-purple-400 mt-1"></i>
+                            <div>
+                                <span class="block text-white font-bold">Memory Bloat</span>
+                                <span class="text-sm text-slate-500">Traditional formats require full materialization into memory-heavy object trees.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/50 p-10 rounded-3xl border border-white/5">
+                    <h3 class="text-xl font-bold text-white mb-8 text-center">The SX Protocol Advantage</h3>
+                    <div class="relative space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-md bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 text-[10px] font-bold mt-1">01</div>
+                            <p class="text-sm text-slate-400"><strong>Zero-Copy Views:</strong> Data arrives in structured memory segments. Apps read it directly from the buffer without allocation.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-md bg-purple-600/20 border border-purple-500/40 flex items-center justify-center text-purple-400 text-[10px] font-bold mt-1">02</div>
+                            <p class="text-sm text-slate-400"><strong>Hot/Cold Separation:</strong> Metadata and routing keys are indexed separately for instant infrastructure access.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-md bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-[10px] font-bold mt-1">03</div>
+                            <p class="text-sm text-slate-400"><strong>Semantic Hashing:</strong> Signing and integrity are based on logical state, not physical byte formatting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extended Code Comparison Section -->
+    <section id="code" class="py-24 bg-slate-900/20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4 tracking-tight">Real-World Data Comparison</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">Comparing how a complex Financial Order structure is represented across formats. SX supports native UUIDs, Decimals, and Enums without string-hacks.</p>
+            </div>
+            
+            <div class="bg-slate-950 rounded-3xl border border-white/5 overflow-hidden shadow-2xl">
+                <!-- Tab Headers -->
+                <div class="flex border-b border-white/5 bg-white/5 p-1">
+                    <button onclick="switchTab('json')" class="tab-btn px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white rounded-xl transition-all" data-tab="json">JSON (Universal Text)</button>
+                    <button onclick="switchTab('proto')" class="tab-btn px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white rounded-xl transition-all" data-tab="proto">Protobuf (IDL)</button>
+                    <button onclick="switchTab('sx')" class="tab-btn px-6 py-3 text-xs font-bold uppercase tracking-widest bg-blue-600 text-white rounded-xl transition-all active" data-tab="sx">SX Protocol (.sx)</button>
+                </div>
+
+                <!-- JSON Tab -->
+                <div id="json-tab" class="tab-content p-8 font-mono text-sm text-slate-400 overflow-x-auto code-container">
+<pre>{
+  <span class="text-blue-400">"order_id"</span>: <span class="text-emerald-400">"018f4b5e-7a24-7c8a-b28d-3f951a1b7001"</span>,
+  <span class="text-blue-400">"customer_id"</span>: <span class="text-emerald-400">"018f4b5e-7a24-7c8a-b28d-3f951a1b7002"</span>,
+  <span class="text-blue-400">"status"</span>: <span class="text-emerald-400">"PENDING"</span>,
+  <span class="text-blue-400">"total"</span>: { <span class="text-blue-400">"currency"</span>: <span class="text-emerald-400">"INR"</span>, <span class="text-blue-400">"amount"</span>: <span class="text-orange-400">4999.50</span> },
+  <span class="text-blue-400">"items"</span>: [
+    { <span class="text-blue-400">"sku"</span>: <span class="text-emerald-400">"SKU-101"</span>, <span class="text-blue-400">"qty"</span>: <span class="text-orange-400">1</span>, <span class="text-blue-400">"price"</span>: <span class="text-orange-400">4999.50</span> }
+  ],
+  <span class="text-blue-400">"meta"</span>: {
+    <span class="text-blue-400">"trace_id"</span>: <span class="text-emerald-400">"018f4b5e-7a24-7c8a-b28d-3f951a1b7a01"</span>,
+    <span class="text-blue-400">"region"</span>: <span class="text-emerald-400">"ap-south-1"</span>
+  }
+}</pre>
+                </div>
+
+                <!-- Protobuf Tab -->
+                <div id="proto-tab" class="tab-content p-8 font-mono text-sm text-slate-400 overflow-x-auto code-container">
+<pre><span class="text-purple-400">message</span> Order {
+  <span class="text-emerald-400">string</span> order_id = <span class="text-orange-400">1</span>;
+  <span class="text-emerald-400">string</span> customer_id = <span class="text-orange-400">2</span>;
+  <span class="text-purple-400">enum</span> Status { PENDING = <span class="text-orange-400">0</span>; COMPLETE = <span class="text-orange-400">1</span>; }
+  Status status = <span class="text-orange-400">3</span>;
+  <span class="text-purple-400">message</span> Money { <span class="text-emerald-400">string</span> currency = <span class="text-orange-400">1</span>; <span class="text-emerald-400">double</span> amount = <span class="text-orange-400">2</span>; }
+  Money total = <span class="text-orange-400">4</span>;
+  <span class="text-purple-400">message</span> Item { <span class="text-emerald-400">string</span> sku = <span class="text-orange-400">1</span>; <span class="text-emerald-400">int32</span> qty = <span class="text-orange-400">2</span>; <span class="text-emerald-400">double</span> price = <span class="text-orange-400">3</span>; }
+  <span class="text-purple-400">repeated</span> Item items = <span class="text-orange-400">5</span>;
+  <span class="text-emerald-400">map</span>&lt;<span class="text-emerald-400">string</span>, <span class="text-emerald-400">string</span>&gt; meta = <span class="text-orange-400">6</span>;
+}</pre>
+                </div>
+
+                <!-- SX Tab -->
+                <div id="sx-tab" class="tab-content active p-8 font-mono text-sm text-blue-100 overflow-x-auto code-container">
+<pre><span class="text-purple-400">schema</span> OrderCreated <span class="text-slate-500">v1</span> {
+  <span class="text-yellow-500">#1</span> order_id: <span class="text-emerald-400">uuid</span>
+  <span class="text-yellow-500">#2</span> customer_id: <span class="text-emerald-400">uuid</span>
+  <span class="text-yellow-500">#3</span> total: <span class="text-emerald-400">money</span>
+  <span class="text-yellow-500">#4</span> items: <span class="text-emerald-400">OrderItem[]</span>
+  <span class="text-yellow-500">#5</span> <span class="text-yellow-500">@hot</span> region: <span class="text-emerald-400">enum</span>["ap-south-1", "us-east-1"]
+}
+
+<span class="text-purple-400">message</span> OrderCreated {
+  order_id: <span class="text-emerald-400">uuid</span>(<span class="text-orange-400">"018f4b5e-7a24-7c8a-b28d-3f951a1b7001"</span>),
+  customer_id: <span class="text-emerald-400">uuid</span>(<span class="text-orange-400">"018f4b5e-7a24-7c8a-b28d-3f951a1b7002"</span>),
+  total: <span class="text-emerald-400">money</span>(<span class="text-orange-400">"INR"</span>, <span class="text-orange-400">499950</span>, <span class="text-slate-500">scale: 2</span>),
+  items: [ { sku: <span class="text-orange-400">"SKU-101"</span>, qty: <span class="text-orange-400">1</span>, price: <span class="text-orange-400">4999.50</span> } ],
+  region: <span class="text-orange-400">"ap-south-1"</span>
+}</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Benchmarks -->
+    <section id="comparison" class="py-24 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-4 text-center tracking-tight">Comprehensive Performance Data</h2>
+            <p class="text-slate-500 text-center mb-16 text-sm uppercase tracking-widest font-semibold">Measured Benchmarks (Alpha 2) · ops/sec</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                <!-- 1. Infrastructure Path (Hot Fields) -->
+                <div class="p-8 bg-slate-900 border border-white/5 rounded-3xl group">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider"><i class="fas fa-bolt text-blue-400 mr-2"></i> Infrastructure Fast-Path</h4>
+                        <span class="text-[10px] text-slate-500 font-mono">1k Event Batch</span>
+                    </div>
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between text-xs mb-2"><span>JSON Parse (Full)</span><span class="font-mono">307.9</span></div>
+                            <div class="w-full h-3 bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-slate-600" style="width: 20%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-2 text-blue-400 font-bold"><span>SX Hot Field Read</span><span class="font-mono">1,488.2</span></div>
+                            <div class="w-full h-3 bg-blue-500/10 rounded-full overflow-hidden border border-blue-500/20"><div class="h-full bg-blue-500" style="width: 100%;"></div></div>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-[10px] text-slate-500 leading-relaxed italic">Gateways and Proxies can peek at routing headers 4.8x faster without materializing the full payload.</p>
+                </div>
+
+                <!-- 2. Analytical Path (Table Scan) -->
+                <div class="p-8 bg-slate-900 border border-white/5 rounded-3xl group">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider"><i class="fas fa-table text-purple-400 mr-2"></i> Analytical Scan</h4>
+                        <span class="text-[10px] text-slate-500 font-mono">10k Rows Batch</span>
+                    </div>
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between text-xs mb-2"><span>Materialized Table</span><span class="font-mono">293.9</span></div>
+                            <div class="w-full h-3 bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-slate-600" style="width: 86%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-2 text-purple-400 font-bold"><span>SX Columnar Scan</span><span class="font-mono">338.7</span></div>
+                            <div class="w-full h-3 bg-purple-500/10 rounded-full overflow-hidden border border-purple-500/20"><div class="h-full bg-purple-500" style="width: 100%;"></div></div>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-[10px] text-slate-500 leading-relaxed italic">Native columnar segments enable SIMD-friendly scanning and filtering without constructing row objects.</p>
+                </div>
+
+                <!-- 3. State Synchronization (Delta Apply) -->
+                <div class="p-8 bg-slate-900 border border-white/5 rounded-3xl group">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider"><i class="fas fa-sync text-emerald-400 mr-2"></i> State Synchronization</h4>
+                        <span class="text-[10px] text-slate-500 font-mono">Small State Patch</span>
+                    </div>
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between text-xs mb-2"><span>Standard Message Decode</span><span class="font-mono">58,237</span></div>
+                            <div class="w-full h-3 bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-slate-600" style="width: 22%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-2 text-emerald-400 font-bold"><span>SX Delta Application</span><span class="font-mono">261,952</span></div>
+                            <div class="w-full h-3 bg-emerald-500/10 rounded-full overflow-hidden border border-emerald-500/20"><div class="h-full bg-emerald-500" style="width: 100%;"></div></div>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-[10px] text-slate-500 leading-relaxed italic">Applying a delta update is 4.5x faster than re-decoding a full message. Perfect for real-time collaboration.</p>
+                </div>
+
+                <!-- 4. Deterministic Identity (Logical Hash) -->
+                <div class="p-8 bg-slate-900 border border-white/5 rounded-3xl group">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider"><i class="fas fa-fingerprint text-orange-400 mr-2"></i> Semantic Integrity</h4>
+                        <span class="text-[10px] text-slate-500 font-mono">Small Message</span>
+                    </div>
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between text-xs mb-2"><span>Binary Encode/Sign</span><span class="font-mono">50,831</span></div>
+                            <div class="w-full h-3 bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-slate-600" style="width: 43%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-2 text-orange-400 font-bold"><span>SX Logical Hashing</span><span class="font-mono">117,313</span></div>
+                            <div class="w-full h-3 bg-orange-500/10 rounded-full overflow-hidden border border-orange-500/20"><div class="h-full bg-orange-500" style="width: 100%;"></div></div>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-[10px] text-slate-500 leading-relaxed italic">Computing a canonical logical hash is extremely efficient, ensuring deduplication without full serialization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Capability Matrix -->
+    <section class="py-24 border-t border-white/5 bg-slate-950/40">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center tracking-tight">Capability Matrix</h2>
+            <div class="rounded-3xl border border-white/5 overflow-hidden glass">
+                <div class="comparison-grid bg-white/5 p-6 border-b border-white/10 font-bold text-white text-[10px] uppercase tracking-widest">
+                    <div>Capability</div>
+                    <div class="text-center">JSON</div>
+                    <div class="text-center">Protobuf</div>
+                    <div class="text-center text-blue-400">SX Protocol</div>
+                </div>
+                <!-- Model -->
+                <div class="comparison-grid p-6 border-b border-white/5 items-center text-sm">
+                    <div class="text-slate-400 font-medium">Data Model</div>
+                    <div class="text-center text-xs">Dynamic / Text</div>
+                    <div class="text-center text-xs">Schema / Binary</div>
+                    <div class="text-center text-xs text-white font-bold">Multi-Layout State</div>
+                </div>
+                <!-- Zero Copy -->
+                <div class="comparison-grid p-6 border-b border-white/5 items-center text-sm">
+                    <div class="text-slate-400 font-medium">Zero-Copy Reads</div>
+                    <div class="text-center text-xs">No</div>
+                    <div class="text-center text-xs">Limited</div>
+                    <div class="text-center text-xs text-white font-bold">Native View API</div>
+                </div>
+                <!-- Built-in Types -->
+                <div class="comparison-grid p-6 border-b border-white/5 items-center text-sm">
+                    <div class="text-slate-400 font-medium">Rich Types</div>
+                    <div class="text-center text-xs">No</div>
+                    <div class="text-center text-xs">Standard</div>
+                    <div class="text-center text-xs text-white font-bold">UUID, Money, Tensors</div>
+                </div>
+                <!-- Segmenting -->
+                <div class="comparison-grid p-6 border-b border-white/5 items-center text-sm">
+                    <div class="text-slate-400 font-medium">Hot/Cold Segments</div>
+                    <div class="text-center text-xs">No</div>
+                    <div class="text-center text-xs">No</div>
+                    <div class="text-center text-xs text-white font-bold">Yes (Indexed)</div>
+                </div>
+                <!-- Columnar -->
+                <div class="comparison-grid p-6 items-center text-sm">
+                    <div class="text-slate-400 font-medium">Columnar Mode</div>
+                    <div class="text-center text-xs">No</div>
+                    <div class="text-center text-xs">No</div>
+                    <div class="text-center text-xs text-white font-bold">Native Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section id="use-cases" class="py-24 bg-slate-900/20">
+        <div class="max-w-7xl mx-auto px-6 text-center md:text-left">
+            <h2 class="text-3xl font-bold text-white mb-16 text-center tracking-tight">Industry Applications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-3xl bg-slate-900 border border-white/5">
+                    <i class="fas fa-chart-line text-blue-400 mb-6 text-xl"></i>
+                    <h4 class="text-xl font-bold text-white mb-3">FinTech</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">Exchange high-precision trade state and large order books with microsecond latency. SX handles <strong>Decimal</strong> and <strong>Money</strong> types natively.</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-slate-900 border border-white/5">
+                    <i class="fas fa-robot text-purple-400 mb-6 text-xl"></i>
+                    <h4 class="text-xl font-bold text-white mb-3">AI Agents</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">Verify intent and safety policies at the gateway using <strong>Hot Field Indexes</strong> without decoding the heavy context payloads.</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-slate-900 border border-white/5">
+                    <i class="fas fa-rss text-emerald-400 mb-6 text-xl"></i>
+                    <h4 class="text-xl font-bold text-white mb-3">IoT & Edge</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">Reduce bandwidth by up to 90% using <strong>State Deltas</strong>. Send only what changed since the last heartbeat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Contribution Section -->
+    <section id="contact" class="py-24 relative overflow-hidden border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-white mb-8 tracking-tight">Get in Touch</h2>
+            <p class="text-slate-400 mb-12 text-lg font-light">
+                We are currently in <strong>Alpha 2</strong>. If you are an enterprise looking to optimize your data infrastructure or a developer wanting to contribute, reach out.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16">
+                <div class="p-8 glass rounded-2xl text-left border border-white/5">
+                    <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest block mb-4">Official Contact</span>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-user text-slate-500"></i>
+                            <span class="text-white font-semibold">Sai Pavan Velidandla</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-slate-500"></i>
+                            <a href="mailto:researchwithpavan@gmail.com" class="text-slate-400 hover:text-white transition-colors">researchwithpavan@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-phone text-slate-500"></i>
+                            <span class="text-slate-400">+91 9502444362</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-8 glass rounded-2xl text-left border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold text-purple-400 uppercase tracking-widest block mb-4">Source Code</span>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-6">Explore the core Rust implementation, C ABI, and multi-language bindings on GitHub.</p>
+                    </div>
+                    <a href="https://github.com/researchwithpavan/sx-protocol" target="_blank" class="px-6 py-3 bg-white text-slate-950 rounded-xl font-bold text-sm hover:bg-slate-200 transition-all text-center flex items-center justify-center gap-2">
+                        <i class="fab fa-github"></i> View Repository
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex justify-center gap-10 text-slate-600 text-xs font-mono">
+                <span>MIT LICENSE</span>
+                <span>ALPHA 2.0</span>
+                <span>RUST POWERED</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-center gap-2 mb-8">
+                <div class="w-6 h-6 bg-white/10 rounded-md flex items-center justify-center text-[8px] font-bold italic text-white">SX</div>
+                <span class="text-sm font-bold text-white tracking-tight">SX Protocol Project</span>
+            </div>
+            <p class="text-slate-600 text-xs uppercase tracking-[0.2em]">© 2026 Sai Pavan Velidandla · Developed for the Next Era of State</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            // Update buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('text-slate-400');
+            });
+            const activeBtn = document.querySelector(`[data-tab="${tabId}"]`);
+            activeBtn.classList.add('bg-blue-600', 'text-white');
+            activeBtn.classList.remove('text-slate-400');
+
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+        }
+
+        // Smooth scroll implementation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navigation transparency on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-slate-950/90');
+                nav.classList.remove('bg-slate-950/0');
+            } else {
+                nav.classList.remove('bg-slate-950/90');
+                nav.classList.add('bg-slate-950/0');
+            }
+        });
+    </script>
+</body>
+</html>
